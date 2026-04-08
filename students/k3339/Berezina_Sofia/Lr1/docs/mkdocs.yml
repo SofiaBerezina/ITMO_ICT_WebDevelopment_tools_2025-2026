@@ -1,0 +1,16 @@
+site_name: Лабораторная работа № 1 "Тайм-менеджер на FastAPI"
+site_author: Березина София, К3339
+theme:
+  name: material
+  language: ru
+  palette:
+    primary: indigo
+    accent: deep purple
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+
+nav:
+  - Главная: index.md
+  - Лабораторная работа: lab.md

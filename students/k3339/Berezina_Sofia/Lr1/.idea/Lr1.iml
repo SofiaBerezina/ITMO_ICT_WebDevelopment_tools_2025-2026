@@ -7,4 +7,12 @@
     <orderEntry type="jdk" jdkName="Python 3.10 (Lr1)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyNamespacePackagesService">
+    <option name="namespacePackageFolders">
+      <list>
+        <option value="$MODULE_DIR$/practice" />
+        <option value="$MODULE_DIR$/lab" />
+      </list>
+    </option>
+  </component>
 </module>
