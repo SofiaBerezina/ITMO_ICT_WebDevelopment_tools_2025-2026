@@ -112,3 +112,20 @@ class TimeLogResponse(TimeLogBase):
 
     class Config:
         from_attributes = True
+
+class NotificationBase(BaseModel):
+    task_id: int
+    notification_type: str
+    message: str
+
+class NotificationCreate(NotificationBase):
+    pass
+
+class NotificationResponse(NotificationBase):
+    id: int
+    user_id: int
+    sent_at: datetime
+    is_read: bool
+
+    class Config:
+        from_attributes = True

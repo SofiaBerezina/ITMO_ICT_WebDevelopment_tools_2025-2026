@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from connection import init_db, get_session
-from api import tasks, time_logs, statuses, task_types, priorities, users
+from api import tasks, time_logs, statuses, task_types, priorities, users, notifications
 from models import Priority, Status, TaskType
 from sqlmodel import select
 
@@ -57,6 +57,7 @@ app.include_router(statuses.router)
 app.include_router(task_types.router)
 app.include_router(tasks.router)
 app.include_router(time_logs.router)
+app.include_router(notifications.router)
 
 @app.get("/")
 def root():

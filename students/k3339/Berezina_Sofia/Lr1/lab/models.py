@@ -11,6 +11,7 @@ class User(SQLModel, table=True):
 
     # Связь с задачами
     tasks: List["Task"] = Relationship(back_populates="user")
+    notifications: List["Notification"] = Relationship(back_populates="user")
 
 # Приоритет - one-to-many с Task
 class Priority(SQLModel, table=True):
@@ -60,6 +61,8 @@ class Task(SQLModel, table=True):
     time_logs: List["TimeLog"] = Relationship(back_populates="task")
     user: "User" = Relationship(back_populates="tasks")
 
+    notifications: List["Notification"] = Relationship(back_populates="task")
+
 
 # Лог времени - many-to-one с Task
 class TimeLog(SQLModel, table=True):
@@ -69,3 +72,19 @@ class TimeLog(SQLModel, table=True):
     end_time: Optional[datetime] = None
     duration_hours: float = 0.0
     task: Task = Relationship(back_populates="time_logs")
+
+# Уведомления - many-to-many с Task
+class Notification(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    user_id: int = Field(foreign_key="user.id")
+    task_id: int = Field(foreign_key="task.id")
+
+    # доп поля, характеризующие уведомление
+    notification_type: str  # deadline_reminder, overdue, daily_summary
+    sent_at: datetime = Field(default_factory=datetime.now)
+    is_read: bool = False
+    message: str
+
+    # Связи
+    user: User = Relationship(back_populates="notifications")
+    task: Task = Relationship(back_populates="notifications")
