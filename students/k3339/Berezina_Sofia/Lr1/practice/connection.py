@@ -1,6 +1,9 @@
 from sqlmodel import SQLModel, Session, create_engine
+from dotenv import load_dotenv
+import os
 
-db_url = 'postgresql://postgres:123@localhost/warriors_db'
+load_dotenv()
+db_url = os.getenv('DB_ADMIN')
 engine = create_engine(db_url, echo=True)
 
 
